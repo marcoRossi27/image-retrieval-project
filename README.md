@@ -1,102 +1,43 @@
 # image-retrieval-project
-🚀 Image Retrieval Project with CLIP and Deep Metric Learning
-This repository contains a complete implementation of an image retrieval system based on a CLIP (ViT-L/14) model, fine-tuned using Deep Metric Learning techniques. The project is designed for flexibility, allowing the use of either a default dataset (Food101) or a custom, user-provided dataset.
+# 🚀 Image Retrieval with CLIP and Deep Metric Learning
 
-The multi-task training strategy combines several loss functions to learn highly discriminative image embeddings:
+## Abstract  
+This repository presents a modular, end-to-end implementation of an image retrieval system based on a pre-trained CLIP ViT-L/14 backbone, fine-tuned via Deep Metric Learning (DML). Our multi-task training strategy combines ProxyAnchorLoss, TripletMarginLoss with hard-negative mining, and CrossEntropyLoss to learn highly discriminative embeddings. The code supports both the default Food101 dataset and any custom, user-supplied dataset in an ImageFolder format.
 
-ProxyAnchorLoss: A robust proxy-based loss for metric learning.
-TripletMarginLoss with Hard Negative Mining: To focus training on the most informative examples.
-CrossEntropyLoss: Used as an auxiliary loss to regularize and stabilize the training process.
-&lt;br>
+---
 
-📂 Project Structure
-The code is organized into a modular structure to ensure clarity and maintainability:
-
+## 📂 Project Structure  
+```text
 .
-├── main.py             # Main script to launch training and evaluation
-├── config.py           # Central configuration file for all hyperparameters
-├── requirements.txt    # Python dependencies for the project
+├── main.py             # Entrypoint: training & evaluation
+├── project_config.py   # Central hyperparameters & paths
+├── requirements.txt    # Python dependencies
 └── src/
-    ├── data/           # Modules for data loading and preparation
+    ├── data/           # Data preparation
+    │   └── datasets.py
+    ├── transforms/     # Data augmentations
+    │   └── transforms.py
+    ├── samplers/       # Metric-learning samplers
+    │   └── samplers.py
+    ├── loader/         # Data loaders
     │   └── loader.py
-    ├── training/       # Modules for model definition and training
-    │   ├── model.py
+    ├── models/         # Model definitions
+    │   └── model.py
+    ├── training/       # Training loop & utilities
     │   └── trainer.py
-    └── inference/      # Modules for evaluation and inference
+    └── inference/      # Embedding extraction & evaluation
         └── evaluate.py
-&lt;br>
-
-⚙️ Setup and Installation
-Follow these steps to get the project running on your local machine.
-
-[!IMPORTANT]
-Prerequisites:
-
-Python 3.8+
-Git
-Procedure:
-
-Clone the repository:
-
-Bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
- Navigate into the project directory:
-
-Bash
-cd YOUR_REPOSITORY_NAME
-   ```
-
- (Recommended) Create and activate a virtual environment:
-
-Bash
+```
+⚙️ Installation
+1. Prerequisites
+  - Python 3.8 or higher
+  - Git
+2. Clone & Virtual Environment
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
- Install the required dependencies:
+source venv/bin/activate   # Windows: venv\Scripts\activate
 
-Snippet di codice
+3. Dependencies
 pip install -r requirements.txt
- &lt;br>
 
-▶️ Usage
-The script can be run in two distinct modes.
-
-Mode 1: Default Dataset (Food101)
-
-This is the simplest way to run the project.
-
-[!NOTE]
-On the first run, the script will automatically download the Food101 dataset and organize it into the required folder structure. This might take some time.
-
-To start the training with the default setup, simply run:
-
-Bash
-python main.py
-Mode 2: Custom Dataset
-
-You can use your own dataset, as long as it follows the required folder structure.
-
-[!TIP]
-Required Folder Structure:
-
-your_dataset/
-├── training/
-│   ├── class1/
-│   └── class2/
-└── test/
-    ├── query/
-    └── gallery/
- To use your custom dataset, run the script with the --data_dir argument:
-
-Bash
-python main.py --data_dir /path/to/your/dataset
-&lt;br>
-
-🔧 Configuration
-All major hyperparameters are centralized in the config.py file for easy experimentation.
-
-[!NOTE]
-Modifying config.py is the recommended way to test different settings without altering the core logic. You can easily tweak parameters such as:
-
-LEARNING_RATE, BATCH_SIZE, EPOCHS
-EMBED_DIM, UNFREEZE_LAYERS
-PROXY_MARGIN, TRIPLET_MARGIN
