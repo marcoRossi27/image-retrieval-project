@@ -67,17 +67,11 @@ python main.py --mode train --data_dir /path/to/your_dataset
 python main.py --mode eval  --data_dir /path/to/your_dataset
 ```
 🔧 Configuration
-All hyperparameters and paths are centralized in project_config.py. Key parameters include:
-Parameter	Description
-DEVICE	"cuda" or "cpu"
-NUM_CLASSES	Number of classes to sample (default: 100)
-MAX_PER_CLASS	Max images per class (default: 250)
-BATCH_SIZE	Batch size (default: 32)
-LR_BASE / LR_BACKBONE	Learning rates for head and backbone
-EPOCHS / WARMUP_EPOCHS	Total and warm-up epochs
-EMBED_DIM	Embedding dimensionality (default: 2048)
-MARGIN / ALPHA	ProxyAnchor and triplet margins
-CE_WEIGHT	Weight for CrossEntropyLoss
-dataset_name	"Food101" or "Custom"
-Note: Tuning these values is highly recommended for optimal performance on new domains.
+All major hyperparameters are centralized in the config.py file for easy experimentation.
 
+[!NOTE]
+Modifying config.py is the recommended way to test different settings without altering the core logic. You can easily tweak parameters such as:
+
+LEARNING_RATE, BATCH_SIZE, EPOCHS
+EMBED_DIM, UNFREEZE_LAYERS
+PROXY_MARGIN, TRIPLET_MARGIN
