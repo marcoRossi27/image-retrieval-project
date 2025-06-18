@@ -40,5 +40,44 @@ python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 ```
 3. Dependencies
+```bash
 pip install -r requirements.txt
+```
+▶️ Usage
+1. Default Dataset (Food101)
+On first execution, the script will download and preprocess Food101 automatically.
+```bash
+python main.py --mode train
+python main.py --mode eval
+```
+2. Custom Dataset
+Your dataset must follow an ImageFolder-style hierarchy:
+```bash
+your_dataset/
+├── training/
+│   ├── class1/
+│   └── class2/
+└── test/
+    ├── query/
+    └── gallery/
+```
+Invoke with:
+```bash
+python main.py --mode train --data_dir /path/to/your_dataset
+python main.py --mode eval  --data_dir /path/to/your_dataset
+```
+🔧 Configuration
+All hyperparameters and paths are centralized in project_config.py. Key parameters include:
+Parameter	Description
+DEVICE	"cuda" or "cpu"
+NUM_CLASSES	Number of classes to sample (default: 100)
+MAX_PER_CLASS	Max images per class (default: 250)
+BATCH_SIZE	Batch size (default: 32)
+LR_BASE / LR_BACKBONE	Learning rates for head and backbone
+EPOCHS / WARMUP_EPOCHS	Total and warm-up epochs
+EMBED_DIM	Embedding dimensionality (default: 2048)
+MARGIN / ALPHA	ProxyAnchor and triplet margins
+CE_WEIGHT	Weight for CrossEntropyLoss
+dataset_name	"Food101" or "Custom"
+Note: Tuning these values is highly recommended for optimal performance on new domains.
 
