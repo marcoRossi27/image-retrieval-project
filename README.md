@@ -39,18 +39,18 @@ Procedure:
 Clone the repository:
 
 Bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
  Navigate into the project directory:
 
 Bash
 cd YOUR_REPOSITORY_NAME
- 
-3.  (Recommended) Create and activate a virtual environment:
+  ```
 
- ```bash
+ (Recommended) Create and activate a virtual environment:
+
+Bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
  Install the required dependencies:
 
 Bash
