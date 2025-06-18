@@ -67,11 +67,23 @@ python main.py --mode train --data_dir /path/to/your_dataset
 python main.py --mode eval  --data_dir /path/to/your_dataset
 ```
 🔧 Configuration
-All major hyperparameters are centralized in the config.py file for easy experimentation.
+```text
+## 🔧 Configuration
 
-[!NOTE]
-Modifying config.py is the recommended way to test different settings without altering the core logic. You can easily tweak parameters such as:
+All hyperparameters and paths live in `project_config.py`. You can tweak these to suit your dataset or hardware.
 
-LEARNING_RATE, BATCH_SIZE, EPOCHS
-EMBED_DIM, UNFREEZE_LAYERS
-PROXY_MARGIN, TRIPLET_MARGIN
+| Parameter             | Description                                                      |
+|-----------------------|------------------------------------------------------------------|
+| `DEVICE`              | Compute device, either `"cuda"` (GPU) or `"cpu"`.               |
+| `NUM_CLASSES`         | Number of classes to sample (default: `100`).                   |
+| `MAX_PER_CLASS`       | Maximum images per class (default: `250`).                      |
+| `BATCH_SIZE`          | Mini-batch size (default: `32`).                                |
+| `LR_BASE` / `LR_BACKBONE` | Learning rates for the MLP head and the CLIP backbone.    |
+| `EPOCHS` / `WARMUP_EPOCHS` | Total training epochs and warm-up epochs.              |
+| `EMBED_DIM`           | Dimensionality of the embedding vector (default: `2048`).       |
+| `MARGIN` / `ALPHA`    | Margin (for triplet loss) and alpha (for ProxyAnchorLoss).      |
+| `CE_WEIGHT`           | Weight of the `CrossEntropyLoss` term in the total loss.        |
+| `dataset_name`        | `"Food101"` (default) or `"Custom"` (for your own ImageFolder). |
+
+> **Tip:** Experiment with these settings for different domains and compute budgets!  
+```
