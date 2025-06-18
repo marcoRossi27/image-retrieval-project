@@ -33,11 +33,12 @@ This repository presents a modular, end-to-end implementation of an image retrie
   - Python 3.8 or higher
   - Git
 2. Clone & Virtual Environment
+```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
 cd YOUR_REPO
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
-
+```
 3. Dependencies
 pip install -r requirements.txt
 
