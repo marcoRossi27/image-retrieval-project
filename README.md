@@ -10,7 +10,7 @@ This repository presents a modular, end-to-end implementation of an image retrie
 ```text
 .
 ├── main.py             # Entrypoint: training & evaluation
-├── project_config.py   # Central hyperparameters & paths
+├── config.py   # Central hyperparameters & paths
 ├── requirements.txt    # Python dependencies
 └── src/
     ├── data/           # Data preparation
@@ -70,7 +70,7 @@ python main.py --mode eval  --data_dir /path/to/your_dataset
 ```text
 ## 🔧 Configuration
 
-All hyperparameters and paths live in `project_config.py`. You can tweak these to suit your dataset or hardware.
+All hyperparameters and paths live in `config.py`. You can tweak these to suit your dataset or hardware.
 
 | Parameter             | Description                                                      |
 |-----------------------|------------------------------------------------------------------|
