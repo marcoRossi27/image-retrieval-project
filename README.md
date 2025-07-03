@@ -1,5 +1,5 @@
 # image-retrieval-project
-# 🚀 Image Retrieval with CLIP and Deep Metric Learning
+#  Image Retrieval with CLIP and Deep Metric Learning
 
 ## Abstract  
 This repository presents a modular, end-to-end implementation of an image retrieval system based on a pre-trained CLIP ViT-L/14 backbone, fine-tuned via Deep Metric Learning (DML). Our multi-task training strategy combines ProxyAnchorLoss, TripletMarginLoss with hard-negative mining, and CrossEntropyLoss to learn highly discriminative embeddings. The code supports both the default Food101 dataset and any custom, user-supplied dataset in an ImageFolder format.
