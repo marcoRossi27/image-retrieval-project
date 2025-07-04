@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+data_cache/
+your_dataset/
+
+# Virtual environment
+venv/
